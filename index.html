@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkInbox - Anonymous Message Inbox</title>
+    <title>OrphanageCare - Anonymous Support Messages</title>
     <style>
         * {
             margin: 0;
@@ -632,8 +632,8 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <h1>📨 LinkInbox</h1>
-                <p>Receive anonymous messages from anyone</p>
+                <h1>🏥 OrphanageCare</h1>
+                <p>Send anonymous support messages to make a difference</p>
             </div>
             <div class="header-controls">
                 <button class="btn-icon" id="themeToggle" title="Toggle dark mode">🌙</button>
@@ -645,19 +645,19 @@
 
         <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" data-tab="inbox">📥 Inbox</button>
+            <button class="tab-btn active" data-tab="inbox">📥 Messages</button>
             <button class="tab-btn" data-tab="share">🔗 Share Link</button>
             <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
             <button class="tab-btn" data-tab="settings">⚙️ Settings</button>
         </div>
 
-        <!-- Inbox Tab -->
+        <!-- Messages Tab -->
         <div id="inbox" class="tab-content active">
             <div class="messages-grid" id="messagesContainer">
                 <div class="empty-state">
                     <div class="empty-state-icon">📭</div>
                     <h3>No messages yet</h3>
-                    <p>Share your link to start receiving anonymous messages!</p>
+                    <p>Share your link to start receiving support messages!</p>
                     <button class="btn btn-primary" onclick="switchTab('share')">Share My Link</button>
                 </div>
             </div>
@@ -667,7 +667,7 @@
         <div id="share" class="tab-content">
             <div class="card link-section">
                 <h2>🔗 Your Personal Message Link</h2>
-                <p style="margin-bottom: 20px; color: #64748b;">Share this link with anyone to receive anonymous messages</p>
+                <p style="margin-bottom: 20px; color: #64748b;">Share this link with anyone to receive anonymous support messages</p>
                 
                 <div class="link-display">
                     <input type="text" id="linkBox" class="link-box" readonly>
@@ -694,13 +694,13 @@
 
             <!-- Send Message Section -->
             <div class="card">
-                <h2>✉️ Test Your Link</h2>
-                <p style="margin-bottom: 20px; color: #64748b;">Send yourself a test message</p>
+                <h2>✉️ Send a Message</h2>
+                <p style="margin-bottom: 20px; color: #64748b;">Write an anonymous message of encouragement</p>
                 <div class="form-group">
                     <label>Your Message:</label>
                     <textarea id="testMessage" placeholder="Type your anonymous message here..."></textarea>
                 </div>
-                <button class="btn btn-primary" id="sendTestBtn">Send Test Message</button>
+                <button class="btn btn-primary" id="sendTestBtn">Send Message</button>
             </div>
         </div>
 
@@ -811,10 +811,10 @@
 
     <script>
         // Initialize App
-        class LinkInbox {
+        class OrphanageCare {
             constructor() {
-                this.storageKey = 'linkinbox_data';
-                this.settingsKey = 'linkinbox_settings';
+                this.storageKey = 'orphanagecare_data';
+                this.settingsKey = 'orphanagecare_settings';
                 this.messages = [];
                 this.userId = null;
                 this.settings = {
@@ -857,10 +857,10 @@
             }
 
             generateUserId() {
-                let userId = localStorage.getItem('linkinbox_userid');
+                let userId = localStorage.getItem('orphanagecare_userid');
                 if (!userId) {
                     userId = 'user_' + Math.random().toString(36).substr(2, 9);
-                    localStorage.setItem('linkinbox_userid', userId);
+                    localStorage.setItem('orphanagecare_userid', userId);
                 }
                 this.userId = userId;
             }
@@ -968,7 +968,7 @@
             regenerateLink() {
                 if (confirm('This will generate a new link. Your old link will no longer work. Continue?')) {
                     this.userId = 'user_' + Math.random().toString(36).substr(2, 9);
-                    localStorage.setItem('linkinbox_userid', this.userId);
+                    localStorage.setItem('orphanagecare_userid', this.userId);
                     document.getElementById('linkBox').value = this.generateLink();
                     this.generateQRCode();
                     this.showNotification('New link generated!', 'success');
@@ -979,8 +979,8 @@
                 const link = this.generateLink();
                 if (navigator.share) {
                     navigator.share({
-                        title: 'LinkInbox',
-                        text: 'Send me anonymous messages!',
+                        title: 'OrphanageCare',
+                        text: 'Send me anonymous support messages!',
                         url: link
                     });
                 } else {
@@ -991,7 +991,7 @@
             downloadQR() {
                 const canvas = document.querySelector('#qrCode canvas');
                 const link = document.createElement('a');
-                link.download = 'linkinbox-qr.png';
+                link.download = 'orphanagecare-qr.png';
                 link.href = canvas.toDataURL();
                 link.click();
                 this.showNotification('QR code downloaded!', 'success');
@@ -1006,10 +1006,10 @@
 
                 this.addMessage(messageText);
                 document.getElementById('testMessage').value = '';
-                this.showNotification('Test message sent!', 'success');
+                this.showNotification('Message sent!', 'success');
             }
 
-            addMessage(text, source = 'test') {
+            addMessage(text, source = 'direct') {
                 const toxicityScore = this.analyzeToxicity(text);
                 const isFlagged = toxicityScore > 0.6;
                 const isToxic = toxicityScore > 0.8;
@@ -1065,7 +1065,7 @@
                         <div class="empty-state">
                             <div class="empty-state-icon">📭</div>
                             <h3>No messages yet</h3>
-                            <p>Share your link to start receiving anonymous messages!</p>
+                            <p>Share your link to start receiving support messages!</p>
                             <button class="btn btn-primary" onclick="switchTab('share')">Share My Link</button>
                         </div>
                     `;
@@ -1253,7 +1253,7 @@
                 const url = URL.createObjectURL(dataBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = `linkinbox-backup-${Date.now()}.json`;
+                link.download = `orphanagecare-backup-${Date.now()}.json`;
                 link.click();
                 
                 this.showNotification('Data exported!', 'success');
@@ -1297,6 +1297,14 @@
                 }
             }
 
+            switchTab(tabName) {
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                
+                document.getElementById(tabName).classList.add('active');
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            }
+
             escapeHtml(text) {
                 const div = document.createElement('div');
                 div.textContent = text;
@@ -1308,16 +1316,12 @@
         let app;
         
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            app.switchTab(tabName);
         }
 
         // Initialize
         window.addEventListener('DOMContentLoaded', () => {
-            app = new LinkInbox();
+            app = new OrphanageCare();
         });
 
         // Handle incoming messages from shared link
