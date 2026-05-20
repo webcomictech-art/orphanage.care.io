@@ -1,18 +1,13 @@
-# New Front Page Design for Orphanage Care
-
-Replace the contents of your current `index.html` with this modern nonprofit homepage.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orphanage Care</title>
+  <title>Orphanage Care | Giving Every Child a Family and a Future</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -23,93 +18,113 @@ Replace the contents of your current `index.html` with this modern nonprofit hom
 
     body {
       font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
       background: #f8fafc;
-      color: #0f172a;
-      overflow-x: hidden;
+      color: #1e293b;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
     }
 
     header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
-      padding: 1rem 6%;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 0;
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #2563eb;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
     }
 
     .nav-links a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #0f172a;
+      color: #334155;
       font-weight: 500;
-      transition: 0.3s;
     }
 
-    .nav-links a:hover {
-      color: #2563eb;
+    .donate-btn {
+      background: #2563eb;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background: #1d4ed8;
     }
 
     .hero {
-      min-height: 100vh;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       display: flex;
       align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 120px 8% 80px;
-      background:
-        linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)),
-        url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       color: white;
     }
 
     .hero-content {
-      max-width: 850px;
-      animation: fadeIn 1.2s ease;
+      max-width: 800px;
+      margin: auto;
+      animation: fadeIn 1.5s ease;
     }
 
     .hero h1 {
-      font-size: 4.5rem;
-      line-height: 1.1;
+      font-size: 3.8rem;
+      line-height: 1.2;
       margin-bottom: 1.5rem;
-      font-weight: 800;
     }
 
     .hero p {
-      font-size: 1.3rem;
-      line-height: 1.8;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
-      color: #e2e8f0;
+      color: #f1f5f9;
     }
 
     .hero-buttons {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .btn {
+    .primary-btn,
+    .secondary-btn {
       padding: 1rem 2rem;
       border-radius: 999px;
-      text-decoration: none;
       font-weight: 600;
       transition: 0.3s ease;
-      display: inline-block;
     }
 
     .primary-btn {
@@ -119,7 +134,6 @@ Replace the contents of your current `index.html` with this modern nonprofit hom
 
     .primary-btn:hover {
       background: #1d4ed8;
-      transform: translateY(-3px);
     }
 
     .secondary-btn {
@@ -128,321 +142,230 @@ Replace the contents of your current `index.html` with this modern nonprofit hom
     }
 
     .secondary-btn:hover {
-      transform: translateY(-3px);
+      background: #e2e8f0;
     }
 
-    .impact-section {
-      padding: 6rem 8%;
-      background: white;
+    section {
+      padding: 5rem 0;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
 
     .section-title h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #0f172a;
     }
 
     .section-title p {
-      color: #64748b;
       max-width: 700px;
       margin: auto;
-      line-height: 1.7;
+      color: #64748b;
+    }
+
+    .mission-grid,
+    .stats-grid,
+    .stories-grid,
+    .nav-card-grid,
+    .program-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .mission-grid,
+    .program-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      align-items: center;
     }
 
     .stats-grid {
-      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
     }
 
-    .stat-card {
-      background: #f8fafc;
-      padding: 2.5rem;
-      border-radius: 24px;
+    .stories-grid,
+    .nav-card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stats-card {
       text-align: center;
-      transition: 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
     }
 
-    .stat-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .stat-card h3 {
+    .stats-card h3 {
       font-size: 3rem;
       color: #2563eb;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .programs {
-      padding: 6rem 8%;
-      background: #eff6ff;
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .program-card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      transition: 0.3s ease;
-    }
-
-    .program-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .program-card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
+    .program-card h3,
+    .story-card h3,
+    .nav-card h3 {
+      margin: 1rem 0;
       color: #0f172a;
     }
 
-    .program-card p {
-      color: #64748b;
-      line-height: 1.8;
+    .story-card img,
+    .program-card img {
+      border-radius: 16px;
+      height: 220px;
+      object-fit: cover;
+      margin-bottom: 1rem;
     }
 
     .cta-section {
-      padding: 6rem 8%;
       background: linear-gradient(135deg, #2563eb, #1e3a8a);
-      text-align: center;
       color: white;
+      text-align: center;
+      border-radius: 30px;
+      padding: 4rem 2rem;
     }
 
     .cta-section h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
     .cta-section p {
       max-width: 700px;
       margin: auto auto 2rem;
-      line-height: 1.8;
       color: #dbeafe;
     }
 
     footer {
       background: #0f172a;
+      color: #cbd5e1;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h3 {
       color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .copyright {
       text-align: center;
-      padding: 2rem;
+      border-top: 1px solid #334155;
+      padding-top: 1.5rem;
+      color: #94a3b8;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @media (max-width: 768px) {
+    @media(max-width: 768px) {
       .hero h1 {
-        font-size: 2.8rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 1rem;
+        font-size: 2.5rem;
       }
 
       .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
       }
 
-      .nav-links a {
-        margin: 0.5rem;
+      .hero {
+        height: auto;
+        padding: 8rem 0;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <nav>
-    <div class="logo">Orphanage Care</div>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Orphanage Care</div>
 
-    <div class="nav-links">
-      <a href="#impact">Impact</a>
-      <a href="#programs">Programs</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#stories">Stories</a>
+          <a href="#contact">Contact</a>
+          <a href="#donate" class="donate-btn">Donate</a>
+        </div>
+      </nav>
     </div>
-  </nav>
-</header>
+  </header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Giving Every Child a Family and a Future</h1>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Giving Every Child a Family and a Future</h1>
 
-    <p>
-      We provide shelter, education, healthcare, mentorship, and hope to orphaned and vulnerable children around the world.
-    </p>
+        <p>
+          Supporting vulnerable children with shelter, education,
+          healthcare, emotional care, and opportunities for a brighter future.
+        </p>
 
-    <div class="hero-buttons">
-      <a href="https://www.gofundme.com/" class="btn primary-btn">Donate Now</a>
-      <a href="#programs" class="btn secondary-btn">Explore Programs</a>
+        <div class="hero-buttons">
+          <a href="#donate" class="primary-btn">Donate Now</a>
+          <a href="#sponsor" class="secondary-btn">Sponsor a Child</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="impact-section" id="impact">
-  <div class="section-title">
-    <h2>Our Impact</h2>
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Mission</h2>
+        <p>
+          We are dedicated to transforming the lives of orphaned and vulnerable
+          children through safe housing, education, healthcare, mentorship,
+          and community support.
+        </p>
+      </div>
 
-    <p>
-      Every contribution changes lives by giving children access to safety, education, healthcare, and opportunity.
-    </p>
-  </div>
+      <div class="mission-grid">
+        <div>
+          <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1200&auto=format&fit=crop" alt="Children smiling">
+        </div>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <h3>500+</h3>
-      <p>Children Supported</p>
+        <div>
+          <div class="card">
+            <h3>Creating Hope Through Compassion</h3>
+            <p>
+              Every child deserves love, safety, education, and the chance to dream.
+              Our programs focus on long-term stability and family-centered care.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="stat-card">
-      <h3>120+</h3>
-      <p>Volunteers Worldwide</p>
-    </div>
-
-    <div class="stat-card">
-      <h3>35+</h3>
-      <p>Community Programs</p>
-    </div>
-
-    <div class="stat-card">
-      <h3>10+</h3>
-      <p>Years of Impact</p>
-    </div>
-  </div>
-</section>
-
-<section class="impact-section">
-  <div class="section-title">
-    <h2>About Our Orphanage Home</h2>
-
-    <p>
-      Orphanage Care is dedicated to providing a safe, loving, and supportive home for orphaned and homeless children who have been affected by poverty, abandonment, crisis, and hardship. We believe every child deserves protection, education, healthcare, emotional support, and the opportunity to dream about a brighter future.
-    </p>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <h3>Safe Shelter</h3>
-      <p>
-        We provide children with secure housing, nutritious meals, clean clothing, and a caring environment where they can feel protected and valued.
-      </p>
-    </div>
-
-    <div class="stat-card">
-      <h3>Education & Hope</h3>
-      <p>
-        Through education programs, mentorship, and emotional support, we help children build confidence and create pathways toward successful futures.
-      </p>
-    </div>
-
-    <div class="stat-card">
-      <h3>Support For Homeless Children</h3>
-      <p>
-        Many children face homelessness and extreme hardship. Our mission is to provide immediate care, stability, and long-term support to help them rebuild their lives.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="programs" id="programs">
-  <div class="section-title">
-    <h2>Programs That Change Lives</h2>
-
-    <p>
-      Our nonprofit programs focus on long-term transformation and sustainable support for vulnerable children.
-    </p>
-  </div>
-
-  <div class="program-grid">
-    <div class="program-card">
-      <h3>Education Support</h3>
-      <p>
-        Scholarships, school supplies, tutoring, and mentorship programs helping children succeed academically.
-      </p>
-    </div>
-
-    <div class="program-card">
-      <h3>Healthcare & Nutrition</h3>
-      <p>
-        Access to medical care, nutritious meals, counseling, and emotional support services.
-      </p>
-    </div>
-
-    <div class="program-card">
-      <h3>Child Sponsorship</h3>
-      <p>
-        Sponsor a child monthly and directly help provide education, housing, and life-changing opportunities.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section" id="donate">
-  <h2>Be The Reason A Child Smiles Today</h2>
-
-  <p>
-    Your support can provide safety, education, food, and hope to children who need it most.
-  </p>
-
-  <a href="https://www.gofundme.com/" class="btn secondary-btn">
-    Support Our Mission
-  </a>
-</section>
-
-<footer id="contact">
-  <p>
-    © 2026 Orphanage Care — Giving Every Child Hope, Love, and Opportunity.
-  </p>
-</footer>
-
-</body>
-</html>
-```
-
-# How To Publish
-
-1. Open your GitHub repository
-2. Open `index.html`
-3. Delete the old code
-4. Paste this new code
-5. Click `Commit changes`
-6. Wait 1–2 minutes for GitHub Pages to update
-
-Your homepage will then have:
-
-* modern hero section
-* nonprofit branding
-* animations
-* responsive mobile design
-* impact statistics
-* donation CTA
-* modern cards
-* professional nonprofit appearance
+  </section>
